@@ -1,16 +1,29 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div :class="darkMode ? 'dark' : ''" class="dashboard" id="app">
+    <!-- <side-bar /> -->
+    <div  class="main-view">
+      <div class="bg-white dark:bg-gray-900 border-b border-white dark:border-gray-500 w-full px-8 py-8">
+        <h3 @click.prevent="darkMode =! darkMode" class="page-title text-gray-800 dark:text-white"> Dashboard </h3>
+      </div>
+      <div class="route-view bg-gray-100 dark:bg-gray-800">
+        <router-view/>
+      </div>
     </div>
-    <router-view/>
   </div>
 </template>
-
 <style lang="scss">
 @import '@/assets/css/main.scss';
-
+.dashboard {
+  overflow: hidden;
+  .page-title {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .route-view {
+    background-color: #EAEAEA;
+    padding: 28px 32px;
+  }
+}
 #nav {
   padding: 30px;
 
@@ -24,3 +37,12 @@
   }
 }
 </style>
+<script>
+export default {
+  data() {
+    return {
+      darkMode: false
+    }
+  }
+}
+</script>
