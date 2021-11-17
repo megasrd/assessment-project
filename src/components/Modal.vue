@@ -6,12 +6,12 @@
     <transition v-if="isActive" appear mode="out-in" name="modal">
         <div class="modal-wrapper">
             <div class="modal-inner">
-                <div class="modal">
-                    <div class="modal__container relative">
-                        <span @click.prevent="isActive = false" class="material-icons absolute right-0 p-4 cursor-pointer">
+                <div class="modal max-w-xl">
+                    <div class="modal__container bg-white dark:bg-gray-700 relative">
+                        <span @click.prevent="isActive = false" class="material-icons text-black dark:text-white absolute right-0 p-4 cursor-pointer">
                             close
                         </span>                        
-                        <div class="modal__header">
+                        <div class="modal__header text-gray-900 dark:text-gray-200">
                             <slot name="header" />
                         </div>                    
                         <div class="modal__body">
@@ -64,6 +64,9 @@
             z-index: 300;
             position: relative;
             height: 100%;
+            @media (min-width: 450px) {
+                padding: 50px;
+            }
             @media (max-width: 780px) {
                 display: block;
             }
@@ -71,15 +74,10 @@
                 transition: all 0.3s ease;
                 padding-bottom: 0;
                 position: relative;
-                width: 100%;
                 margin-left: auto;
                 margin-right: auto;
-                @media (min-width: 640px) {
-                    width: 512px;
-                }
                 &__container {
                     box-shadow: 0px 4px 4px 0px #00000040;
-                    background: #fff;
                     display: flex;
                     flex-direction: column;
                     flex-grow: 1;
@@ -91,12 +89,12 @@
                     }
                 }
                 &__header {
-                    padding: 16px 20px;
+                    padding: 18px 26px;
                     font-weight: bold;
                     font-size: 24px;                    
                 }
                 &__body {
-                    padding: 16px 20px;  
+                    padding: 18px 26px;  
                     position: relative;
                     overflow-y: auto;
                     -webkit-overflow-scrolling: touch;
@@ -105,7 +103,10 @@
                     flex-direction: column;
                     flex-grow: 1;
                     text-align: left;
-                    z-index: 500;            
+                    z-index: 500;        
+                    @media (max-width: 450px) {
+                        min-height: 75vh;
+                    }    
                 }
                 &__footer {
                     position: relative;
@@ -115,7 +116,7 @@
                     display: flex;
                     border-radius: 0;
                     justify-content: flex-end;
-                    padding: 16px 20px;
+                    padding: 18px 26px;
                     border-top: 1px solid rgb(129, 129, 129);
                     @media (min-width: 640px) {
                         border: none;

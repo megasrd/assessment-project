@@ -2,8 +2,10 @@
   <div :class="darkMode ? 'dark' : ''" class="dashboard" id="app">
     <!-- <side-bar /> -->
     <div  class="main-view">
-      <div class="bg-white dark:bg-gray-900 border-b border-white dark:border-gray-500 w-full px-8 py-8">
-        <h3 @click.prevent="darkMode =! darkMode" class="page-title text-gray-800 dark:text-white"> Dashboard </h3>
+      <div style="border-bottom: 3px solid #24B47E" class="dark md:flex items-center justify-between bg-gray-900 w-full md:px-12 px-6 md:py-8 py-6">
+        <!-- <h3 class="text-2xl font-semibold text-white"> Dashboard </h3> -->
+        <img class="w-64" src="@/assets/logo.png" />
+        <toggle class="text-gray-100 md:mt-0 mt-8" @input="darkMode =! darkMode" label="Toggle Dark Mode" />
       </div>
       <div class="route-view bg-gray-100 dark:bg-gray-800">
         <router-view/>
@@ -21,7 +23,10 @@
   }
   .route-view {
     background-color: #EAEAEA;
-    padding: 28px 32px;
+    @media (min-width: 425px) {
+      padding: 28px 50px 300px 50px;
+    }
+    padding: 20px;
   }
 }
 #nav {
@@ -38,7 +43,11 @@
 }
 </style>
 <script>
+import Toggle from '@/components/Toggle.vue'
 export default {
+  components: {
+    Toggle
+  },
   data() {
     return {
       darkMode: false

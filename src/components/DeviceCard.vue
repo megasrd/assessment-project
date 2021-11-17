@@ -11,52 +11,52 @@
                 </template>
                 <template #body>
                     <div class="grid grid-cols-2 gap-y-2">
-                        <div class="py-2 px-4 bg-gray-200 rounded-l-xl font-bold">
+                        <div class="py-2 px-4 text-gray-900 dark:text-gray-200 text-sm bg-gray-200 dark:bg-gray-600 rounded-l-xl font-bold">
                             Description
                         </div>
-                        <div class="py-2 px-4 bg-gray-200 rounded-r-xl">
+                        <div class="py-2 px-4 text-gray-900 dark:text-gray-200 text-sm bg-gray-200 dark:bg-gray-600 rounded-r-xl">
                             {{ data.description || 'N/A' }}
                         </div>    
 
-                        <div class="py-2 px-4 bg-gray-100 rounded-l-xl font-bold">
+                        <div class="py-2 px-4 text-gray-900 dark:text-gray-200 text-sm bg-gray-100 dark:bg-gray-500 rounded-l-xl font-bold">
                             Uptime
                         </div>
-                        <div class="py-2 px-4 bg-gray-100 rounded-r-xl">
+                        <div class="py-2 px-4 text-gray-900 dark:text-gray-200 text-sm bg-gray-100 dark:bg-gray-500 rounded-r-xl">
                             {{ data.uptime_age || 'N/A' }}
                         </div>  
 
-                        <div class="py-2 px-4 bg-gray-200 rounded-l-xl font-bold">
+                        <div class="py-2 px-4 text-gray-900 dark:text-gray-200 text-sm bg-gray-200 dark:bg-gray-600 rounded-l-xl font-bold">
                             Last Heartbeat
                         </div>
-                        <div class="py-2 px-4 bg-gray-200 rounded-r-xl">
+                        <div class="py-2 px-4 text-gray-900 dark:text-gray-200 text-sm bg-gray-200 dark:bg-gray-600 rounded-r-xl">
                             {{ data.last_heartbeat_age || 'N/A' }}
                         </div>       
 
-                        <div class="py-2 px-4 bg-gray-100 rounded-l-xl font-bold">
+                        <div class="py-2 px-4 text-gray-900 dark:text-gray-200 text-sm bg-gray-100 dark:bg-gray-500 rounded-l-xl font-bold">
                            First Seen
                         </div>
-                        <div class="py-2 px-4 bg-gray-100 rounded-r-xl">
+                        <div class="py-2 px-4 text-gray-900 dark:text-gray-200 text-sm bg-gray-100 dark:bg-gray-500 rounded-r-xl">
                             {{ data.first_seen_age || 'N/A' }}
                         </div>                         
 
-                        <div class="py-2 px-4 bg-gray-200 rounded-l-xl font-bold">
+                        <div class="py-2 px-4 text-gray-900 dark:text-gray-200 text-sm bg-gray-200 dark:bg-gray-600 rounded-l-xl font-bold">
                             Operating System
                         </div>
-                        <div class="py-2 px-4 bg-gray-200 rounded-r-xl">
+                        <div class="py-2 px-4 text-gray-900 dark:text-gray-200 text-sm bg-gray-200 dark:bg-gray-600 rounded-r-xl">
                             {{ data.ippers || 'N/A' }}
                         </div>  
 
-                        <div class="py-2 px-4 bg-gray-100 rounded-l-xl font-bold">
+                        <div class="py-2 px-4 text-gray-900 dark:text-gray-200 text-sm bg-gray-100 dark:bg-gray-500 rounded-l-xl font-bold">
                             MAC address
                         </div>
-                        <div class="py-2 px-4 bg-gray-100 rounded-r-xl">
+                        <div class="py-2 px-4 text-gray-900 dark:text-gray-200 text-sm bg-gray-100 dark:bg-gray-500 rounded-r-xl">
                             {{ data.mac_address || 'N/A' }}
                         </div>   
 
                     </div>
                 </template>
                 <template #button>
-                    <span class="more-icon material-icons">
+                    <span class="more-icon material-icons bg-white hover:bg-gray-200 dark:bg-gray-600 dark:bg-gray-700 dark:hover:bg-gray-800">
                         more_horiz
                     </span>
                 </template>
@@ -69,6 +69,10 @@
                 <span class="description"> {{ data.description }} </span>
             </li>
             <li> 
+                <span class="title"> IP Address: </span> 
+                <span class="description"> {{ data.ip_address || 'N/A' }} </span>
+            </li>             
+            <li> 
                 <span class="title"> Uptime: </span> 
                 <span class="description"> {{ data.uptime_age }} </span>
             </li>      
@@ -77,7 +81,7 @@
                 <span class="description"> {{ data.last_heartbeat_age }} </span>
             </li>                       
         </ul>
-        <div v-if="data.ippers != undefined" class="os-icon absolute right-0 bottom-0 m-4 p-2 border border-gray-300 bg-gray-100 dark:border-gray-400 dark:bg-gray-500 rounded-full">
+        <div v-if="data.ippers != undefined" class="os-icon absolute right-0 bottom-0 m-4 p-2 border border-gray-300 bg-gray-100 dark:bg-gray-500 dark:border-gray-400 dark:bg-gray-600 rounded-full">
             <img class="p-1 w-8 h-8 object-contain" :src="`${ data.ippers ? require('@/assets/images/' + data.ippers +'.png') : '' }`" />
         </div>
     </div>
@@ -120,13 +124,11 @@
                     cursor: pointer;
                     font-size: 28px;
                     color: #8f8f8f;
-                    background: #fff;
                     border-radius: 6px;
                     padding: 0px 6px;
                     transition: background 0.2s ease-in;
                     user-select: none;
                     &:hover {
-                         background: #ebebeb;
                          transition: background 0.2s ease-out;
                     }
                 }
